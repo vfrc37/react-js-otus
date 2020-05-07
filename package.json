@@ -1,0 +1,19 @@
+{
+  "name": "react-js-otus",
+  "version": "1.0.0",
+  "description": "Курс по React от OTUS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vfrc37/react-js-otus.git"
+  },
+  "author": "Maxim Ermishkin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vfrc37/react-js-otus/issues"
+  },
+  "homepage": "https://github.com/vfrc37/react-js-otus#readme"
+}
