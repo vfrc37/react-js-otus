@@ -3,10 +3,10 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.tsx',
   devtool: 'source-map',
   resolve: {
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
   },
   output: {
     filename: 'main.js',
@@ -15,7 +15,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js)x?$/,
+        test: /\.(js|ts)x?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
       }
