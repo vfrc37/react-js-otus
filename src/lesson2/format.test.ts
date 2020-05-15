@@ -20,4 +20,20 @@ describe("format test cases", () => {
   it("1 + (1 + ( 1 + 32 ))", () => {
     expect(format("1 + (1 + ( 1 + 32 ))")).toEqual("1 + ( 1 + ( 1 + 32 ) )");
   });
+
+  it("4!", () => {
+    expect(format("4!")).toEqual("4 !");
+  });
+
+  it("4^2", () => {
+    expect(format("4^2")).toEqual("4 ^ 2");
+  });
+
+  it("4**", () => {
+    expect(format("4**")).toEqual("4 ^ 2");
+  });
+
+  it("4**2", () => {
+    expect(format("4**2")).toEqual("4 ^ 2");
+  });
 });
