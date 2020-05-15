@@ -8,6 +8,28 @@ import {
 
 const [, FIRST, SECOND] = mathPriorities;
 
+export const zeroPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
+  stack.reduce<ParsedLineType>((result, nextItem) => {
+    const prevItem = result[result.length - 2];
+    const item = result[result.length - 1];
+
+    if (nextItem === "!" && isNumber(String(item))) {
+      result = [...result.slice(0, -1), mathOperators[nextItem](Number(item))];
+    } else if (
+      item === "^" &&
+      isNumber(String(prevItem)) &&
+      isNumber(String(nextItem))
+    ) {
+      result = [
+        ...result.slice(0, -2),
+        mathOperators[item](Number(prevItem), Number(nextItem)),
+      ];
+    } else {
+      result.push(nextItem);
+    }
+    return result;
+  }, []);
+
 export const firstPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
   stack.reduce<ParsedLineType>((result, nextItem) => {
     const prevItem = result[result.length - 2];
