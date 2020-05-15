@@ -15,9 +15,16 @@ export const parser = (line: string): ParsedLineType | null => {
       !isNumber(item) &&
       mathOperators.hasOwnProperty(item);
 
+    const bracketsSymbols = ["(", ")"];
+
     if (isValidNumberPush) {
       result.push(Number(item));
     } else if (isValidOperatorPush) {
+      result.push(item);
+    } else if (
+      bracketsSymbols.includes(item) ||
+      bracketsSymbols.includes(prevItem)
+    ) {
       result.push(item);
     } else {
       throw new TypeError("Unexpected string");
