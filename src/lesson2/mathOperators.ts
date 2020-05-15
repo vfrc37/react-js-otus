@@ -1,4 +1,4 @@
-export type ScalarOperationType = (first: number, second: number) => number;
+export type ScalarOperationType = (first: number, second?: number) => number;
 
 export const mul: ScalarOperationType = (
   first: number,
@@ -20,11 +20,14 @@ export const minus: ScalarOperationType = (
   second: number
 ): number => first - second;
 
-export const factorial = (num: number): number => {
+export const factorial: ScalarOperationType = (num: number): number => {
   return num === 1 ? 1 : num * factorial(num - 1);
 };
 
-export const pow = (num: number, power: number): number => {
+export const pow: ScalarOperationType = (
+  num: number,
+  power: number
+): number => {
   return Math.pow(num, power);
 };
 
