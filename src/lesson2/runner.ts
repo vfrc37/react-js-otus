@@ -15,5 +15,5 @@ export const runner = (line: string): number => {
     return Number(firstPrioritiesRes[0]);
   }
 
-  return secondPrioritiesCalc(firstPrioritiesRes);
+  return secondPrioritiesCalc(firstPrioritiesRes)[0];
 };

@@ -38,15 +38,15 @@ describe("secondPrioritiesCalc invalid cases", () => {
 
 describe("secondPrioritiesCalc simple cases", () => {
   it("[32, + 32]", () => {
-    expect(secondPrioritiesCalc([32, "+", 32])).toEqual(64);
+    expect(secondPrioritiesCalc([32, "+", 32])).toEqual([64]);
   });
 
   it("[32, - 32]", () => {
-    expect(secondPrioritiesCalc([32, "-", 32])).toEqual(0);
+    expect(secondPrioritiesCalc([32, "-", 32])).toEqual([0]);
   });
 
   it("[32, - 32, +, 10]", () => {
-    expect(secondPrioritiesCalc([32, "-", 32, "+", 10])).toEqual(10);
+    expect(secondPrioritiesCalc([32, "-", 32, "+", 10])).toEqual([10]);
   });
 });
 
@@ -64,6 +64,12 @@ describe("thirdPrioritiesCalc test cases", () => {
   });
 
   it("[(, (, 32, ), +, 1, )]", () => {
-    expect(thirdPrioritiesCalc(["(", "(", 32, ")", "+", 1, ")"])).toEqual(["(", 32, "+", 1, ")"]);
+    expect(thirdPrioritiesCalc(["(", "(", 32, ")", "+", 1, ")"])).toEqual([
+      "(",
+      32,
+      "+",
+      1,
+      ")",
+    ]);
   });
 });
