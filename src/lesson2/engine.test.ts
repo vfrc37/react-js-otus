@@ -17,6 +17,14 @@ describe("zeroPrioritiesCalc test cases", () => {
   it("[2, ^, 4, ^, 2]", () => {
     expect(zeroPrioritiesCalc([2, "^", 4, "^", 2])).toEqual([256]);
   });
+
+  it("[1, +, 4!]", () => {
+    expect(zeroPrioritiesCalc([1, "+", 4, "!"])).toEqual([1, "+", 24]);
+  });
+
+  it("[1, +, 2, ^, 4]", () => {
+    expect(zeroPrioritiesCalc([1, "+", 2, "^", 4])).toEqual([1, "+", 16]);
+  });
 });
 
 describe("firstPrioritiesCalc simple cases", () => {

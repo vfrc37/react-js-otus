@@ -1,5 +1,6 @@
 export type ScalarOperationType = (first: number, second?: number) => number;
 
+// TODO: разобраться почему тут ругается ts
 export const mul: ScalarOperationType = (
   first: number,
   second: number
