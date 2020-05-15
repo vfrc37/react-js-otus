@@ -40,3 +40,16 @@ export const secondPrioritiesCalc = (stack: ParsedLineType): number =>
     }
     return result;
   }, Number(stack[0]));
+
+export const thirdPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
+  stack.reduce<ParsedLineType>((result, nextItem) => {
+    const prevItem = result[result.length - 2];
+    const item = result[result.length - 1];
+
+    if (isNumber(String(item)) && prevItem === "(" && nextItem === ")") {
+      result = [...result.slice(0, -2), item];
+    } else {
+      result.push(nextItem);
+    }
+    return result;
+  }, []);
