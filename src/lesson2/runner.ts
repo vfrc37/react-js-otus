@@ -4,19 +4,22 @@ import { format } from "./format";
 import { ParsedLineType } from "./parser";
 
 import {
+  zeroPrioritiesCalc,
   firstPrioritiesCalc,
   secondPrioritiesCalc,
   thirdPrioritiesCalc,
 } from "./engine";
 
 const loopThroughStackRecursively = (stack: ParsedLineType): number => {
-  const firstPrioritiesRes = firstPrioritiesCalc(stack);
+  const zeroPrioritiesRes = zeroPrioritiesCalc(stack);
 
-  if (firstPrioritiesRes.length === 1) {
-    return Number(firstPrioritiesRes[0]);
+  if (zeroPrioritiesRes.length === 1) {
+    return Number(zeroPrioritiesRes[0]);
   }
 
-  const res = thirdPrioritiesCalc(secondPrioritiesCalc(firstPrioritiesRes));
+  const res = thirdPrioritiesCalc(
+    secondPrioritiesCalc(firstPrioritiesCalc(zeroPrioritiesRes))
+  );
   if (res.length === 1) {
     return Number(res[0]);
   } else {
