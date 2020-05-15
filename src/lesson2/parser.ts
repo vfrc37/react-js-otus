@@ -27,7 +27,8 @@ export const parser = (line: string): ParsedLineType | null => {
     ) {
       result.push(item);
     } else {
-      throw new TypeError("Unexpected string");
+      result.push(item);
+      // throw new TypeError("Unexpected string");
     }
     return result;
   }, []);
