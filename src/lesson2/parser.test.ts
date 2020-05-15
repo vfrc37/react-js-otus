@@ -28,6 +28,10 @@ describe("Parser correct cases", () => {
       ")",
     ]);
   });
+
+  it("fib(10)", () => {
+    expect(parser("fib ( 10 )")).toEqual(["fib", "(", 10, ")"]);
+  });
 });
 
 describe("Parser invalid cases", () => {

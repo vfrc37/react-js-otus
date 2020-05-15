@@ -36,4 +36,8 @@ describe("format test cases", () => {
   it("4**2", () => {
     expect(format("4**2")).toEqual("4 ^ 2");
   });
+
+  it("fib(10)", () => {
+    expect(format("fib(10)")).toEqual("fib ( 10 )");
+  });
 });
