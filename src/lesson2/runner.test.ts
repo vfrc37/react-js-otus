@@ -36,4 +36,8 @@ describe("Runner long cases", () => {
   it("20 - 10 * 10 / 5 - 3", () => {
     expect(runner("20 - 10 * 10 / 5 - 3")).toEqual(-3);
   });
+
+  it("3 * (3 + ( 7 * 3 )) - (4 * 5)", () => {
+    expect(runner("3 * (3 + ( 7 * 3 )) - (4 * 5)")).toEqual(52);
+  });
 });
