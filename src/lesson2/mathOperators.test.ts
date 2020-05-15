@@ -1,4 +1,15 @@
-import { mul, div, add, minus, factorial, pow } from "./mathOperators";
+import {
+  mul,
+  div,
+  add,
+  minus,
+  factorial,
+  pow,
+  sin,
+  cos,
+  tan,
+  fib,
+} from "./mathOperators";
 
 describe("mathOperators test cases", () => {
   it("mul 1 * 2 to equal 2", () => {
@@ -31,5 +42,21 @@ describe("mathOperators test cases", () => {
 
   it("pow 2 ** 4 = 16", () => {
     expect(pow(2, 4)).toBe(16);
+  });
+
+  it("sin 1", () => {
+    expect(sin(1)).toBe(0.8414709848078965);
+  });
+
+  it("cos 1", () => {
+    expect(cos(1)).toBe(0.5403023058681398);
+  });
+
+  it("tan 1", () => {
+    expect(tan(1)).toBe(1.5574077246549023);
+  });
+
+  it("fib 10 = 55", () => {
+    expect(fib(10)).toBe(55);
   });
 });

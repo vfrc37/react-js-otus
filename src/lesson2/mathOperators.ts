@@ -32,6 +32,20 @@ export const pow: ScalarOperationType = (
   return Math.pow(num, power);
 };
 
+export const sin: ScalarOperationType = (num: number): number => Math.sin(num);
+
+export const cos: ScalarOperationType = (num: number): number => Math.cos(num);
+
+export const tan: ScalarOperationType = (num: number): number => Math.tan(num);
+
+export const fib: ScalarOperationType = (num: number): number => {
+  let [prev, next] = [0, 1];
+  for (let i = 0; i < num; i++) {
+    [next, prev] = [next + prev, next];
+  }
+  return prev;
+};
+
 export const mathOperators: { [key: string]: ScalarOperationType } = {
   "*": mul,
   "/": div,
@@ -39,6 +53,10 @@ export const mathOperators: { [key: string]: ScalarOperationType } = {
   "-": minus,
   "!": factorial,
   "^": pow,
+  sin: sin,
+  cos: cos,
+  tan: tan,
+  fib: fib,
 };
 
 export const mathPriorities: number[] = [0, 1, 2];
