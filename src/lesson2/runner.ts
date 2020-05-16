@@ -11,6 +11,16 @@ import {
   forthPrioritiesCalc,
 } from "./engine";
 
+/**
+ * Функция реализует рекурсивный обход стека, выполняя следующие операции в порядке приоритета:
+ * - возведение в степень, факториал
+ * - умножение, деление
+ * - сложение, вычитание
+ * - раскрытие скобок
+ * - вычисление функций
+ * @param stack
+ * @return {number} - результат вычисления
+ */
 const loopThroughStackRecursively = (stack: ParsedLineType): number => {
   const zeroPrioritiesRes = zeroPrioritiesCalc(stack);
 
