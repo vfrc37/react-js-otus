@@ -1,25 +1,24 @@
 export type ScalarOperationType = (first: number, second?: number) => number;
 
-// TODO: разобраться почему тут ругается ts
 export const mul: ScalarOperationType = (
   first: number,
-  second: number
-): number => first * second;
+  second: number | undefined
+): number => first * (second as number);
 
 export const div: ScalarOperationType = (
   first: number,
-  second: number
-): number => first / second;
+  second: number | undefined
+): number => first / (second as number);
 
 export const add: ScalarOperationType = (
   first: number,
-  second: number
-): number => first + second;
+  second: number | undefined
+): number => first + (second as number);
 
 export const minus: ScalarOperationType = (
   first: number,
-  second: number
-): number => first - second;
+  second: number | undefined
+): number => first - (second as number);
 
 export const factorial: ScalarOperationType = (num: number): number => {
   return num === 1 ? 1 : num * factorial(num - 1);
@@ -27,9 +26,9 @@ export const factorial: ScalarOperationType = (num: number): number => {
 
 export const pow: ScalarOperationType = (
   num: number,
-  power: number
+  power: number | undefined
 ): number => {
-  return Math.pow(num, power);
+  return Math.pow(num, power as number);
 };
 
 export const sin: ScalarOperationType = (num: number): number => Math.sin(num);
