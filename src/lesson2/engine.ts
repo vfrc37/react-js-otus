@@ -84,3 +84,15 @@ export const thirdPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
     }
     return result;
   }, []);
+
+export const forthPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
+  stack.reduce<ParsedLineType>((result, nextItem) => {
+    const item = result[result.length - 1];
+
+    if (/(fib|cos|sin|tan)/.test(String(item)) && isNumber(String(nextItem))) {
+      result = [...result.slice(0, -1), mathOperators[item](Number(nextItem))];
+    } else {
+      result.push(nextItem);
+    }
+    return result;
+  }, []);

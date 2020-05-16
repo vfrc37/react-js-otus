@@ -3,6 +3,7 @@ import {
   firstPrioritiesCalc,
   secondPrioritiesCalc,
   thirdPrioritiesCalc,
+  forthPrioritiesCalc,
 } from "./engine";
 
 describe("zeroPrioritiesCalc test cases", () => {
@@ -86,5 +87,27 @@ describe("thirdPrioritiesCalc test cases", () => {
       1,
       ")",
     ]);
+  });
+});
+
+describe("forthPrioritiesCalc test cases", () => {
+  it("[fib, 10]", () => {
+    expect(forthPrioritiesCalc(["fib", 10])).toEqual([55]);
+  });
+
+  it("[1, +, fib, 10]", () => {
+    expect(forthPrioritiesCalc([1, "+", "fib", 10])).toEqual([1, "+", 55]);
+  });
+
+  it("[sin, 1]", () => {
+    expect(forthPrioritiesCalc(["sin", 1])).toEqual([0.8414709848078965]);
+  });
+
+  it("[cos, 1]", () => {
+    expect(forthPrioritiesCalc(["cos", 1])).toEqual([0.5403023058681398]);
+  });
+
+  it("[tan, 1]", () => {
+    expect(forthPrioritiesCalc(["tan", 1])).toEqual([1.5574077246549023]);
   });
 });
