@@ -44,4 +44,8 @@ describe("Runner long cases", () => {
   it("5! - 2 ^ 4 + 3 **", () => {
     expect(runner("5! + 3 **")).toEqual(129);
   });
+
+  it("(1 + fib(10)) / 2", () => {
+    expect(runner("(1 + fib(10)) / 2")).toEqual(28);
+  });
 });

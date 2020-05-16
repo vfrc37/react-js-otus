@@ -8,6 +8,7 @@ import {
   firstPrioritiesCalc,
   secondPrioritiesCalc,
   thirdPrioritiesCalc,
+  forthPrioritiesCalc,
 } from "./engine";
 
 const loopThroughStackRecursively = (stack: ParsedLineType): number => {
@@ -17,8 +18,10 @@ const loopThroughStackRecursively = (stack: ParsedLineType): number => {
     return Number(zeroPrioritiesRes[0]);
   }
 
-  const res = thirdPrioritiesCalc(
-    secondPrioritiesCalc(firstPrioritiesCalc(zeroPrioritiesRes))
+  const res = forthPrioritiesCalc(
+    thirdPrioritiesCalc(
+      secondPrioritiesCalc(firstPrioritiesCalc(zeroPrioritiesRes))
+    )
   );
   if (res.length === 1) {
     return Number(res[0]);
