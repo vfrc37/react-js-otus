@@ -6,108 +6,72 @@ import {
   forthPrioritiesCalc,
 } from "./engine";
 
-describe("zeroPrioritiesCalc test cases", () => {
-  it("[4, !]", () => {
-    expect(zeroPrioritiesCalc([4, "!"])).toEqual([24]);
-  });
+/* eslint-disable prettier/prettier */
+const tests = [
+  {
+    name: "zeroPrioritiesCalc test cases",
+    cases: [
+      { args: [4, "!"], expected: [24] },
+      { args: [2, "^", 4], expected: [16] },
+      { args: [2, "^", 4, "^", 2], expected: [256] },
+      { args: [1, "+", 4, "!"], expected: [1, "+", 24] },
+      { args: [1, "+", 2, "^", 4], expected: [1, "+", 16] },
+    ],
+    func: zeroPrioritiesCalc,
+  },
+  {
+    name: "firstPrioritiesCalc simple cases",
+    cases: [
+      { args: [1, "*", 32], expected: [32] },
+      { args: [32, "/", 32], expected: [1] },
+      { args: [32, "+", 32], expected: [32, "+", 32] },
+    ],
+    func: firstPrioritiesCalc,
+  },
+  {
+    name: "firstPrioritiesCalc mixed with second priorities cases",
+    cases: [
+      { args: [32, "/", 32, "+", 10, "*", 10], expected: [1, "+", 100] },
+    ],
+    func: firstPrioritiesCalc,
+  },
+  {
+    name: "secondPrioritiesCalc simple cases",
+    cases: [
+      { args: [32, "+", 32], expected: [64] },
+      { args: [32, "-", 32], expected: [0] },
+      { args: [32, "-", 32, "+", 10], expected: [10] },
+    ],
+    func: secondPrioritiesCalc,
+  },
+  {
+    name: "thirdPrioritiesCalc test cases",
+    cases: [
+      { args: [32], expected: [32] },
+      { args: ["(", 32, ")"], expected: [32] },
+      { args: ["(", "(", 32, ")", ")"], expected: [32] },
+      { args: ["(", "(", 32, ")", "+", 1, ")"], expected: ["(", 32, "+", 1, ")"] },
+    ],
+    func: thirdPrioritiesCalc,
+  },
+  {
+    name: "forthPrioritiesCalc test cases",
+    cases: [
+      { args: ["fib", 10], expected: [55] },
+      { args: [1, "+", "fib", 10], expected: [1, "+", 55] },
+      { args: ["sin", 1], expected: [0.8414709848078965] },
+      { args: ["cos", 1], expected: [0.5403023058681398] },
+      { args: ["tan", 1], expected: [1.5574077246549023] },
+    ],
+    func: forthPrioritiesCalc,
+  },
+];
+/* eslint-enable prettier/prettier */
 
-  it("[2, ^, 4]", () => {
-    expect(zeroPrioritiesCalc([2, "^", 4])).toEqual([16]);
-  });
-
-  it("[2, ^, 4, ^, 2]", () => {
-    expect(zeroPrioritiesCalc([2, "^", 4, "^", 2])).toEqual([256]);
-  });
-
-  it("[1, +, 4!]", () => {
-    expect(zeroPrioritiesCalc([1, "+", 4, "!"])).toEqual([1, "+", 24]);
-  });
-
-  it("[1, +, 2, ^, 4]", () => {
-    expect(zeroPrioritiesCalc([1, "+", 2, "^", 4])).toEqual([1, "+", 16]);
-  });
-});
-
-describe("firstPrioritiesCalc simple cases", () => {
-  it("[1, * 32]", () => {
-    expect(firstPrioritiesCalc([1, "*", 32])).toEqual([32]);
-  });
-
-  it("[32, /, 32]", () => {
-    expect(firstPrioritiesCalc([32, "/", 32])).toEqual([1]);
-  });
-
-  it("[32, + 32]", () => {
-    expect(firstPrioritiesCalc([32, "+", 32])).toEqual([32, "+", 32]);
-  });
-});
-
-describe("firstPrioritiesCalc mixed with second priorities cases", () => {
-  it("[32, /, 32, +, 10, *, 10]", () => {
-    expect(firstPrioritiesCalc([32, "/", 32, "+", 10, "*", 10])).toEqual([
-      1,
-      "+",
-      100,
-    ]);
-  });
-});
-
-describe("secondPrioritiesCalc simple cases", () => {
-  it("[32, + 32]", () => {
-    expect(secondPrioritiesCalc([32, "+", 32])).toEqual([64]);
-  });
-
-  it("[32, - 32]", () => {
-    expect(secondPrioritiesCalc([32, "-", 32])).toEqual([0]);
-  });
-
-  it("[32, - 32, +, 10]", () => {
-    expect(secondPrioritiesCalc([32, "-", 32, "+", 10])).toEqual([10]);
-  });
-});
-
-describe("thirdPrioritiesCalc test cases", () => {
-  it("[32]", () => {
-    expect(thirdPrioritiesCalc([32])).toEqual([32]);
-  });
-
-  it("[(, 32, )]", () => {
-    expect(thirdPrioritiesCalc(["(", 32, ")"])).toEqual([32]);
-  });
-
-  it("[(, (, 32, ), )]", () => {
-    expect(thirdPrioritiesCalc(["(", "(", 32, ")", ")"])).toEqual([32]);
-  });
-
-  it("[(, (, 32, ), +, 1, )]", () => {
-    expect(thirdPrioritiesCalc(["(", "(", 32, ")", "+", 1, ")"])).toEqual([
-      "(",
-      32,
-      "+",
-      1,
-      ")",
-    ]);
-  });
-});
-
-describe("forthPrioritiesCalc test cases", () => {
-  it("[fib, 10]", () => {
-    expect(forthPrioritiesCalc(["fib", 10])).toEqual([55]);
-  });
-
-  it("[1, +, fib, 10]", () => {
-    expect(forthPrioritiesCalc([1, "+", "fib", 10])).toEqual([1, "+", 55]);
-  });
-
-  it("[sin, 1]", () => {
-    expect(forthPrioritiesCalc(["sin", 1])).toEqual([0.8414709848078965]);
-  });
-
-  it("[cos, 1]", () => {
-    expect(forthPrioritiesCalc(["cos", 1])).toEqual([0.5403023058681398]);
-  });
-
-  it("[tan, 1]", () => {
-    expect(forthPrioritiesCalc(["tan", 1])).toEqual([1.5574077246549023]);
+tests.forEach((t) => {
+  describe(t.name, () => {
+    test.each(t.cases)(`Test %#, %o`, (data) => {
+      expect(t.func(data.args)).toEqual(data.expected);
+    });
   });
 });
