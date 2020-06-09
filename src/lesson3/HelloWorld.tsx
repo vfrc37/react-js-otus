@@ -1,7 +1,7 @@
 import React from "react";
 
 interface Prop {
-  username?: string;
+  username: string;
 }
 
 export const HelloWorld: React.FC<Prop> = ({ username }) => (
