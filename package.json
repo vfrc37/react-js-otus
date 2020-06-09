@@ -57,6 +57,7 @@
     "html-webpack-plugin": "^4.3.0",
     "husky": "^4.2.5",
     "jest": "^26.0.1",
+    "loki": "^0.20.3",
     "prettier": "^2.0.5",
     "ts-node": "^8.10.1",
     "typescript": "^3.8.3",
